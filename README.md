@@ -73,13 +73,13 @@ Of course, I am not done with this project. As a 17 year old and someone who is 
 I have a few future plans:
 * The mean value is skewed by extreme values, such as the maximum (see fitness-frames graph above), a **median** average would make for a much better approximation of the central tendancy for the population.
 * Optimise. The calculation of the median would involve sorting various different lists, this could have a serious effect on performance.
-* Add in fighting and fleeing behaviors to the vehicles to add another factor (perhaps to control overpopulation etc.) 
- * Vehicles bigger than other vehicles are attracted to them and can eat them,
- * Vehicles smaller than others flee from the larger ones,
- * A vehicle dies when eaten and the _eater_ gains the health of the killed victim,
- * As a result, to balance things, I would have to make the speed of a vehicle greater for smaller ones...
- * ... and add a part of the DNA which relates to a vehicle's fight or flight response.
- * ***I attempted implementing once this however was unsuccessful*** 
+* Add in fighting and fleeing behaviors to the vehicles to add another factor (perhaps to control overpopulation etc.)
+  * Vehicles bigger than other vehicles are attracted to them and can eat them,
+  * Vehicles smaller than others flee from the larger ones,
+  * A vehicle dies when eaten and the _eater_ gains the health of the killed victim,
+  * As a result, to balance things, I would have to make the speed of a vehicle greater for smaller ones...
+  * ... and add a part of the DNA which relates to a vehicle's fight or flight response.
+  * ***I attempted implementing once this however was unsuccessful*** 
 * Make a spin-off game version where a user controls a vehicle in the race for food, obviously the game gets harder as time progresses as the genetics of the population improve.
 
 ***
