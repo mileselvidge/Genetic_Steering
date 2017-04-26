@@ -85,8 +85,10 @@ I have a few future plans:
 ***
 
 ## Images
+
+The Simulation in action: 
+![alt text](http://i.imgur.com/B6Vi2o8.png "Simulation with statistics only)\
 ![alt text](http://i.imgur.com/ScqUZwW.png "Simulation with debug and statistics)
-![alt text](http://i.imgur.com/B6Vi2o8.png "Simulation with statistics only)
 
 *** 
 
