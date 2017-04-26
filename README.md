@@ -29,6 +29,17 @@ I have used some of the key concepts shared in his tutorials, such as steering b
  
 *** 
 
+# How to use:
+
+**Press D:** toggle debugging information. 
+
+**Press S:** toggle leaderboard information. 
+
+**Press A:** force a save to CSV.
+
+
+***
+
 # Data Visualisation (and The Leaderboard)
 Perhaps what interested me the most about writing this genetic algorithm was how certain variables, such as the average age and health of a vehicle changed over time. Not only did I want to see this in realtime, I wanted some way of producing an output from the program which I could analyse.
 
