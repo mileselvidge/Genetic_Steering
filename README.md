@@ -1,6 +1,6 @@
 ## Genetic Steering (with Data Visuals)
 This is my attempt to extend Dan Shiffman's (The Coding Rainbow) genetic algorithm for vehicles with steering behaviors.
-I have used some of the key concepts shared in his tutorials, such as steering behaviors and the concept of food, poison and vehicles themselves as a foundation to my project.
+I have used some of the key concepts shared in his tutorials, such as steering behaviors and the concept of food, poison and vehicles themselves as a foundation to my project. I am very excited for all that is to come!
 
 ***
 
@@ -56,3 +56,54 @@ The file contains:
 6. Population Size
 
 This made for some interesting graphics on Excel:
+![alt text](http://i.imgur.com/uKdcvBX.png "Data and graphs")
+
+_To the right you can see the raw CSV data returned by the program (for this example, 1 hour of running, the CSV file has around 47000 lines_
+_To the left are two graphs
+* The top graph displays how maximum and mean fitness change over time..
+* The bottom graph shows how mean health (yellow) and population size (blue) change over time..._
+
+**The Excel workbook containing this example is included in this repo :D**
+
+***
+
+## TODO:
+Of course, I am not done with this project. As a 17 year old and someone who is fairly new and facinated to programming, this project, the learning, coding and even posting to github has been exciting. I can't wait to continue.
+
+I have a few future plans:
+* The mean value is skewed by extreme values, such as the maximum (see fitness-frames graph above), a **median** average would make for a much better approximation of the central tendancy for the population.
+* Optimise. The calculation of the median would involve sorting various different lists, this could have a serious effect on performance.
+* Add in fighting and fleeing behaviors to the vehicles to add another factor (perhaps to control overpopulation etc.) 
+ * Vehicles bigger than other vehicles are attracted to them and can eat them,
+ * Vehicles smaller than others flee from the larger ones,
+ * A vehicle dies when eaten and the _eater_ gains the health of the killed victim,
+ * As a result, to balance things, I would have to make the speed of a vehicle greater for smaller ones...
+ * ... and add a part of the DNA which relates to a vehicle's fight or flight response.
+ * ***I attempted implementing once this however was unsuccessful*** 
+* Make a spin-off game version where a user controls a vehicle in the race for food, obviously the game gets harder as time progresses as the genetics of the population improve.
+
+***
+
+## Images
+![alt text](http://i.imgur.com/ScqUZwW.png "Simulation with debug and statistics)
+![alt text](http://i.imgur.com/B6Vi2o8.png "Simulation with statistics only)
+
+*** 
+
+## References
+Dan Shiffman:
+* http://shiffman.net
+* https://github.com/shiffman
+* https://www.youtube.com/user/shiffman
+
+Nature of Code 2: 
+* https://github.com/shiffman/NOC-S17-2-Intelligence-Learning
+
+Project Euler 22 (where I sources the 5000 random names):
+* https://projecteuler.net/problem=22
+
+Processing: 
+* https://processing.org
+
+
+ 
