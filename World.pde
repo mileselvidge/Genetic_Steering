@@ -1,12 +1,15 @@
 class World {
-  final float FOOD_DENSITY = 1; // Food per 1000pix^2
-  final float POISON_DENSITY = 0.2; 
+  final float FOOD_DENSITY = 1.2; // Food per 1000pix^2
+  final float POISON_DENSITY = 0.3; 
   
   ArrayList<Vehicle> population = new ArrayList<Vehicle>();
   ArrayList<PVector> food = new ArrayList<PVector>();
   ArrayList<PVector> poison = new ArrayList<PVector>();
   
   Leaderboard lb;
+  
+  int totPoi = 1; 
+  int totFood = 1;
   
   World(int start) { 
     // start = starting population
@@ -16,8 +19,8 @@ class World {
       population.add(v);
     }
     
-    int totFood = (int) FOOD_DENSITY * ((width * height) / 1000);
-    int totPoi = (int) POISON_DENSITY * ((width * height) / 1000);
+    totFood = (int) FOOD_DENSITY * ((width * height) / 1000);
+    totPoi = (int) POISON_DENSITY * ((width * height) / 1000);
     
     for(int i = 0; i < totFood; i++) {
       food.add(randomVector());
@@ -55,6 +58,7 @@ class World {
       totals[0] += v.age;
       totals[1] += v.health;
       totals[2] += v.fitness();
+      v.age++;
       if(v.fitness() > maxfitness) {
         maxfitness = v.fitness();
       }
@@ -69,20 +73,20 @@ class World {
     for(int j = 0; j < totals.length; j++){
       totals[j] = totals[j] / population.size(); // Mean totals
     }
-    lb.means = totals; // TODO: Change to median for better measure of central tendancy
+    lb.means = totals; // OLD CODE FOR CALCULATING MEANS
     
     // Append to history arraylist
-    String[] index = {("" + (f/5)),(totals[2]+""),(maxfitness+""),(totals[0]+""),(totals[1]+""),(population.size()+"")};
+    totals = getMedians(population); // Get median for each statistic (good measure of central tendancy)
+    lb.medians = totals;
+    String[] index = {("" + (f/5)),(totals[2]+""),(lb.means[2]+""),(maxfitness+""),(totals[0]+""),(totals[1]+""),(population.size()+"")};
     history.add(index);
   }
   
   void update() {
     // Generate new food/poison
-    if(random(population.size()) < population.size() * FOOD_DENSITY){
-      food.add(randomVector());
-    }
-  
-    if(random(population.size()) < population.size() * POISON_DENSITY * 0.5) {
+    food.add(randomVector());
+
+    if(random(population.size()) < population.size() * POISON_DENSITY * 0.2) {
       poison.add(randomVector());
     }
     

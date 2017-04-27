@@ -3,7 +3,7 @@ class DNA {
   float mutationrate;
   
   String name;
-  int generation = 0;
+  int generation = 1;
   
   DNA(){
     // Generate new DNA
@@ -24,8 +24,10 @@ class DNA {
   }
   
   void mutate(){
+    boolean mutated = false;
     for(int i = 0; i < dna.length; i++) {
       if(random(1) <= mutationrate) {
+      mutated = true;
       dna[i] += random(-abs(dna[i]/2), abs(dna[i]/2));
       if(i == 2 || i == 3 || i == 4 || i == 5 || i == 6 || i == 7) {
         if(dna[i] < 0){
@@ -33,6 +35,9 @@ class DNA {
          }
         }
       }
+    }
+    if(mutated) {
+      generation++;
     }
   }
 }

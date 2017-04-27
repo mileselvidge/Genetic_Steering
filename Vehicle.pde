@@ -5,7 +5,7 @@ class Vehicle {
   PVector acc = new PVector();
   PVector vel = PVector.random2D().setMag(random(-3,3));
   PVector pos;
-  int age = 0;
+  int age = 1;
   
   float health = 1;
   float radius;
@@ -17,7 +17,6 @@ class Vehicle {
   
   Vehicle(float x, float y, DNA dna) {
     genes = dna;
-    genes.generation++;
     genes.mutate();
     if(random(1) > 0.99) {
       genes = new DNA();
@@ -39,7 +38,6 @@ class Vehicle {
     
     // Update Health and age
     health -= 0.005;
-    age++;
   }
   
   float fitness() {
@@ -65,17 +63,18 @@ class Vehicle {
     float record = 10000000;
     PVector closest = new PVector(-1, -1);
     for(int i = list.size()-1; i >=0; i--) {
-      float d = pos.dist(list.get(i));
-      if(d < record) {
-        if(d < radius) {
+      float dsq = distSq(pos, list.get(i));
+      if(dsq < record) {
+        if(dsq < radius * radius) {
           list.remove(i);
           health += gain;
-        } else if(d <= perception) {
-          record = d;
+        } else if(dsq <= sq(perception)) {
+          record = dsq;
           closest = list.get(i);
         }
       }
     }
+    
     
     if(closest.x != -1 && closest.y != -1) {
       return seek(closest);
@@ -100,7 +99,11 @@ class Vehicle {
   
   Vehicle clone() {
     if(random(1) < CLONING_RATE * map(fitness(),0,maxfitness,0,2)) {
-      Vehicle v = new Vehicle(pos.x + random(-20, 20), pos.y + random(-20, 20), genes); 
+      DNA g = new DNA();
+      arrayCopy(genes.dna, g.dna, genes.dna.length);
+      g.name = genes.name;
+      g.generation = genes.generation;
+      Vehicle v = new Vehicle(pos.x + random(-20, 20), pos.y + random(-20, 20), g); 
       return v; 
     } else {
       return null;

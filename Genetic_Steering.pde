@@ -34,7 +34,7 @@ void setup() {
     settings[i] = false;
   }
   
-  String[] header = {"Frame","Mean Fitness","Maximum Fitness","Mean Age","Mean Health","Population"};
+  String[] header = {"Frame","Median Fitness","Mean Fitness","Maximum Fitness","Median Age","Median Health","Population"};
   history.add(header);
   
   names = readFile("names.txt");
@@ -88,4 +88,39 @@ ArrayList<String> readFile(String filename) {
   }
   
   return names;
+}
+
+// An adaptation of bubblesort to return the median value for different statistics 
+float[] getMedians(ArrayList<Vehicle> vehicles) {
+  Vehicle[][] sorted = new Vehicle[3][vehicles.size()];
+  sorted[0] = vehicles.toArray(new Vehicle[vehicles.size()]);
+  sorted[1] = vehicles.toArray(new Vehicle[vehicles.size()]);
+  sorted[2] = vehicles.toArray(new Vehicle[vehicles.size()]);
+  for(int p = 1; p > vehicles.size()-1; p++) {
+    for(int i = 0; i < vehicles.size() - p; i++) {
+      Vehicle temp;
+      for(int j = 0; j < sorted.length; j++) {
+        boolean swap = false;
+        if(sorted[j][i].age > sorted[j][i+1].age && j == 0) { swap = true; }
+        if(sorted[j][i].health > sorted[j][i+1].health && j == 1) { swap = true; }        
+        if(sorted[j][i].fitness() > sorted[j][i+1].fitness() && j == 2) { swap = true; }
+        if(swap) {
+          temp = sorted[j][i+1];
+          sorted[j][i+1] = sorted[j][i];
+          sorted[j][i] = temp;
+        }
+      }
+
+    }
+  }
+  
+  int mid = vehicles.size() / 2;
+  float[] arr = {(sorted[0][mid].age),(sorted[1][mid].health),(sorted[2][mid].fitness())};
+  return arr;
+ }
+ 
+ // Replacement for PVector.dist() function to improve optimisation
+float distSq(PVector v1, PVector v2) {
+  float fdist = sq(v2.x - v1.x) + sq(v2.y - v1.y);
+  return fdist;
 }

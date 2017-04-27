@@ -3,6 +3,7 @@ class Leaderboard {
   Vehicle healthiest;
   Vehicle fittest;
   
+  float[] medians = {0, 0, 0};
   float[] means = {0, 0, 0};
   int population;
   
@@ -24,7 +25,7 @@ class Leaderboard {
     fill(0, 0, 255, 200);
     rect(width-300,400,width,200);
     
-    fill(150, 200);
+    fill(175, 200);
     rect(width-300,600,width,200);
     
     // Titles
@@ -57,10 +58,11 @@ class Leaderboard {
     text("Fittness: "+fittest.fitness(),width-290,150);    
     translate(0,200);
     text("Population: "+population,width-290,50);
-    text("Mean Age: "+means[0],width-290,75);
-    text("Mean Health: "+means[1],width-290,100);
-    text("Mean Fittness: "+means[2],width-290,125);
-    text("FPS: "+frameRate,width-290,150);  
+    text("Median Age: "+medians[0],width-290,75);
+    text("Median Health: "+medians[1],width-290,100);
+    text("Median Fittness: "+medians[2],width-290,125);
+    text("Mean Fittness: "+means[2],width-290,150);
+    text("FPS: "+frameRate,width-290,175);  
     popMatrix();
 
     // Present record holders
