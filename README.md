@@ -60,11 +60,12 @@ Additionally, I wanted a way to view the data afterwards, and see how it progres
 **The output is stored every 1000 frames to a file named _data.csv_**
 The file contains: 
 1. Frame Number (Multiple 5, eg: 1 = 5, etc.)
-2. Mean Fitness
-3. Maximum Fitness 
-4. Mean Age
-5. Mean Health
-6. Population Size
+2. Median Fitness
+3. Mean Fitness
+4. Maximum Fitness 
+5. Median Age
+6. Median Health
+7. Population Size
 
 This made for some interesting graphics on Excel:
 ![alt text](http://i.imgur.com/uKdcvBX.png "Data and graphs")
@@ -82,7 +83,7 @@ _To the left are two graphs
 Of course, I am not done with this project. As a 17 year old and someone who is fairly new and facinated to programming, this project, the learning, coding and even posting to github has been exciting. I can't wait to continue.
 
 I have a few future plans:
-* The mean value is skewed by extreme values, such as the maximum (see fitness-frames graph above), a **median** average would make for a much better approximation of the central tendancy for the population.
+* ~~The mean value is skewed by extreme values, such as the maximum (see fitness-frames graph above), a **median** average would make for a much better approximation of the central tendancy for the population.~~
 * Optimise. The calculation of the median would involve sorting various different lists, this could have a serious effect on performance.
 * Add in fighting and fleeing behaviors to the vehicles to add another factor (perhaps to control overpopulation etc.)
   * Vehicles bigger than other vehicles are attracted to them and can eat them,
@@ -102,6 +103,12 @@ The Simulation in action:
 ![alt text](http://i.imgur.com/ScqUZwW.png "Simulation with stats and debugging information.")
 
 *** 
+
+# Update: 27/04/17
+* Changed measures of central tendancy of statistics from means to medians. On paper this sounds great, but the fitness function might need revising as the cloning of new vehicles (with zero age) skews their fitness for the first few frames and makes the median very fluctuant and hard to analyse.
+* Wrote a distSq() function to elliminate the use of PVector.dist() which uses the sqrt() function (Slow...).
+
+***
 
 ## References
 Dan Shiffman:
