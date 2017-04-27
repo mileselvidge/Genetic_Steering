@@ -13,6 +13,12 @@ class Vehicle {
   float maxspeed;
   float maxforce;
   
+  float foodGaps = 1; // Sum of the frame gaps between eating food
+  float foodGap = 1;
+  int foodEaten = 1;
+  
+  int lifeexpectancy = 100;
+  
   DNA genes;
   
   Vehicle(float x, float y, DNA dna) {
@@ -37,12 +43,15 @@ class Vehicle {
     acc.mult(0);
     
     // Update Health and age
+    foodGap += 0.2;
     health -= 0.005;
   }
   
   float fitness() {
-    return health * age; // arbitrary fitness function 
-  }
+    float meanFoodGap = foodGaps / foodEaten;
+    return (health * (lifeexpectancy+age)) / meanFoodGap; // arbitrary fitness function 
+    // return health * age;
+  }  
   
   void applyForce(PVector force) {
     acc.add(force);
@@ -68,6 +77,11 @@ class Vehicle {
         if(dsq < radius * radius) {
           list.remove(i);
           health += gain;
+          if(gain > 0) {
+            foodGaps += foodGap;
+            foodGap = 0;
+            foodEaten++;
+          }
         } else if(dsq <= sq(perception)) {
           record = dsq;
           closest = list.get(i);
@@ -104,6 +118,7 @@ class Vehicle {
       g.name = genes.name;
       g.generation = genes.generation;
       Vehicle v = new Vehicle(pos.x + random(-20, 20), pos.y + random(-20, 20), g); 
+      v.lifeexpectancy = age;
       return v; 
     } else {
       return null;

@@ -1,6 +1,6 @@
 class World {
   final float FOOD_DENSITY = 1.2; // Food per 1000pix^2
-  final float POISON_DENSITY = 0.3; 
+  final float POISON_DENSITY = 0.35; 
   
   ArrayList<Vehicle> population = new ArrayList<Vehicle>();
   ArrayList<PVector> food = new ArrayList<PVector>();
@@ -84,9 +84,10 @@ class World {
   
   void update() {
     // Generate new food/poison
-    food.add(randomVector());
-
-    if(random(population.size()) < population.size() * POISON_DENSITY * 0.2) {
+    if(random(1) < 0.5) {
+      food.add(randomVector());
+    }
+    if(random(population.size()) < population.size() * POISON_DENSITY * 0.2 && poison.size() < 100) {
       poison.add(randomVector());
     }
     

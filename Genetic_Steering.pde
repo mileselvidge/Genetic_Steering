@@ -95,7 +95,7 @@ float[] getMedians(ArrayList<Vehicle> vehicles) {
   sorted[0] = vehicles.toArray(new Vehicle[vehicles.size()]);
   sorted[1] = vehicles.toArray(new Vehicle[vehicles.size()]);
   sorted[2] = vehicles.toArray(new Vehicle[vehicles.size()]);
-  for(int p = 1; p > vehicles.size()-1; p++) {
+  for(int p = 1; p < vehicles.size()-1; p++) {
     for(int i = 0; i < vehicles.size() - p; i++) {
       Vehicle temp;
       for(int j = 0; j < sorted.length; j++) {
@@ -109,7 +109,6 @@ float[] getMedians(ArrayList<Vehicle> vehicles) {
           sorted[j][i] = temp;
         }
       }
-
     }
   }
   
