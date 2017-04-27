@@ -108,6 +108,9 @@ The Simulation in action:
 * Changed measures of central tendancy of statistics from means to medians. On paper this sounds great, but the fitness function might need revising as the cloning of new vehicles (with zero age) skews their fitness for the first few frames and makes the median very fluctuant and hard to analyse.
 * Wrote a distSq() function to elliminate the use of PVector.dist() which uses the sqrt() function (Slow...).
 
+# Update: 27/04/17 Pt2
+* Updated Fitness Function, now takes into account average time between eating the food and parents lifespan to reduce dependance on age. 
+
 ***
 
 ## References
