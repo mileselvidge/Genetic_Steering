@@ -6,7 +6,6 @@
 //
 // TODO: Optimise, 
 // TODO: Add in fighting and fleeing behaviors, 
-// TODO: Record and calculate median values for age/health/fitness 
 //
 // By Miles Elvidge, 17, 25/04/17
 
